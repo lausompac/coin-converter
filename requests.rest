@@ -1,2 +1,5 @@
 ### Ping
 GET http://localhost:3003/ping
+
+### Get Cotations
+GET http://localhost:3003/convert/BRL/529.99

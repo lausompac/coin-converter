@@ -3,6 +3,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 
 import { pingRouter } from './router/pingRouter'
+import { converterRouter } from './router/ConverterRouter';
 
 dotenv.config();
 
@@ -15,3 +16,4 @@ app.listen(process.env.PORT || 3003, () => {
 });
 
 app.use('/ping', pingRouter);
+app.use('/convert', converterRouter);
