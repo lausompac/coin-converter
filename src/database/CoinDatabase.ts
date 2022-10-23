@@ -5,7 +5,7 @@ export class CoinDatabase extends BaseDatabase {
     public static TABLE_NAME = "Coins";
 
 
-    getCoins = async (): Promise<any> => {
+    getCoins = async (): Promise<ICoinDB[]> => {
         const result = await BaseDatabase
             .connection(CoinDatabase.TABLE_NAME)
             .select("*")
@@ -13,7 +13,7 @@ export class CoinDatabase extends BaseDatabase {
         return result
     }
 
-    createCoin = async (coin: Coin): Promise<void> => {
+    createCoin = async (coin: Coin) => {
         const coinDB: ICoinDB = {
             id: coin.getId(),
             name: coin.getName(),
@@ -25,7 +25,7 @@ export class CoinDatabase extends BaseDatabase {
             .insert(coinDB)
     }
 
-    deleteCoin = async (symbol: string): Promise<void> => {
+    deleteCoin = async (symbol: string)=> {
         await BaseDatabase
             .connection(CoinDatabase.TABLE_NAME)
             .delete()

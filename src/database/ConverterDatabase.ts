@@ -1,5 +1,6 @@
 import { BaseDatabase } from "./BaseDatabase";
 import axios from "axios";
+import { IConvertOutputDTO } from "../models/Coin";
 
 export class ConverterDatabase extends BaseDatabase {
     public static TABLE_NAME = "Coins";
@@ -13,7 +14,7 @@ export class ConverterDatabase extends BaseDatabase {
 
     }
 
-    getQuotations = async (coin: string, originCoin: string, value: string): Promise<any> => {
+    getQuotations = async (coin: string, originCoin: string, value: string): Promise<IConvertOutputDTO | undefined> => {
         const result = await axios.get(`https://economia.awesomeapi.com.br/last/${coin}-${originCoin}`)
 
         const calculate = Number(value) / Number(result.data[`${coin}${originCoin}`].high)

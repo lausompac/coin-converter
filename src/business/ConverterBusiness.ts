@@ -14,13 +14,21 @@ export class ConverterBusiness {
             throw new RequestError("Missing input")
         }
 
-        if (originCoin === "" || value === "") {
-            throw new RequestError("Empty input")
-        }
-
         if (Number(value) <= 0) {
             throw new RequestError("Value must be greater than 0")
         }
+
+        if(isNaN(Number(value))) {
+            throw new RequestError("Invalid value")
+        }
+
+        if(originCoin !== "BRL") {
+            throw new RequestError("Invalid coin")
+        }
+
+        // Lista de moedas válidas (pensar nisso)
+
+        
 
         const coins = await this.converterDatabase.getCoins()
 

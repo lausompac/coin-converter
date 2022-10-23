@@ -22,6 +22,11 @@ export interface IConvertInputDTO {
     value: string
 }
 
+export interface IConvertOutputDTO {
+    coin: string,
+    value: string
+}
+
 export interface ICoinInputDTO {
     name: string,
     symbol: string

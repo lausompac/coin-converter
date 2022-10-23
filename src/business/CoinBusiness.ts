@@ -2,7 +2,7 @@ import { CoinDatabase } from "../database/CoinDatabase"
 import { ConflictError } from "../errors/ConflictError"
 import { NotFoundError } from "../errors/NotFoundError"
 import { RequestError } from "../errors/RequestError"
-import { Coin, ICoinInputDTO } from "../models/Coin"
+import { Coin, ICoinDB, ICoinInputDTO } from "../models/Coin"
 import { IdGenerator } from "../services/IdGenerator"
 
 export class CoinBusiness {
@@ -11,7 +11,7 @@ export class CoinBusiness {
         private idGenerator: IdGenerator = new IdGenerator()
     ) { }
 
-    getCoins = async (): Promise<any> => {
+    getCoins = async (): Promise<ICoinDB[]> => {
         const result = await this.coinDatabase.getCoins()
 
         return result
@@ -24,16 +24,25 @@ export class CoinBusiness {
             throw new RequestError("Missing input")
         }
 
-        if(name === "" || symbol === "") {
-            throw new RequestError("Empty input")
-        }
-
         if(name.length < 3) {
             throw new RequestError("Name must have at least 3 characters")
         }
 
+        if(name.length > 20) {
+            throw new RequestError("Name must have at most 20 characters")
+        }
+
         if(symbol.length < 3) {
             throw new RequestError("Symbol must have at least 3 characters")
+        }
+
+        if(symbol.length > 5) {
+            throw new RequestError("Symbol must have at most 5 characters")
+        }
+
+
+        if(!/^[a-zA-Z]+$/.test(symbol)) {
+            throw new RequestError("Symbol must have only letters")
         }
 
         const isCoinAlreadyRegistered = await this.coinDatabase.getCoins()
@@ -46,7 +55,7 @@ export class CoinBusiness {
         const coin = new Coin(
             id,
             name,
-            symbol
+            symbol.toUpperCase()
         )
 
         await this.coinDatabase.createCoin(coin)
@@ -62,10 +71,6 @@ export class CoinBusiness {
 
         if(!symbol) {
             throw new RequestError("Missing input")
-        }
-
-        if(symbol === "") {
-            throw new RequestError("Empty input")
         }
 
         const isCoinAlreadyRegistered = await this.coinDatabase.getCoins()
