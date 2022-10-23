@@ -1,12 +1,12 @@
 export interface ICoinDB {
-    id: number,
+    id: string,
     name: string,
     symbol: string
 }
 
 export class Coin {
     constructor(
-        private id: number,
+        private id: string,
         private name: string,
         private symbol: string
     ) { }
@@ -17,7 +17,12 @@ export class Coin {
 
 }
 
-export interface ICoinInputDTO {
+export interface IConvertInputDTO {
     originCoin: string,
     value: string
+}
+
+export interface ICoinInputDTO {
+    name: string,
+    symbol: string
 }

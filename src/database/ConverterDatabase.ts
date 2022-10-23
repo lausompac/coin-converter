@@ -1,7 +1,6 @@
 import { BaseDatabase } from "./BaseDatabase";
 import axios from "axios";
 
-
 export class ConverterDatabase extends BaseDatabase {
     public static TABLE_NAME = "Coins";
 

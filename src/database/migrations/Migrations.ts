@@ -1,5 +1,5 @@
 import { BaseDatabase } from "../BaseDatabase";
-import { ConverterDatabase } from "../ConverterDatabase";
+import { CoinDatabase } from "../CoinDatabase";
 import { coins } from "./data";
 
 class Migrations extends BaseDatabase {
@@ -26,9 +26,9 @@ class Migrations extends BaseDatabase {
 
     createTables = async () => {
         await BaseDatabase.connection.raw(`
-            DROP TABLE IF EXISTS ${ConverterDatabase.TABLE_NAME};
+            DROP TABLE IF EXISTS ${CoinDatabase.TABLE_NAME};
 
-            CREATE TABLE IF NOT EXISTS ${ConverterDatabase.TABLE_NAME} (
+            CREATE TABLE IF NOT EXISTS ${CoinDatabase.TABLE_NAME} (
                 id VARCHAR(255) PRIMARY KEY,
                 name VARCHAR(255) NOT NULL,
                 symbol VARCHAR(255) NOT NULL
@@ -39,7 +39,7 @@ class Migrations extends BaseDatabase {
 
     insertData = async () => {
         await BaseDatabase
-            .connection(ConverterDatabase.TABLE_NAME)
+            .connection(CoinDatabase.TABLE_NAME)
             .insert(coins)
     }
 }

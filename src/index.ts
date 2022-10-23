@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 
 import { pingRouter } from './router/pingRouter'
 import { converterRouter } from './router/ConverterRouter';
+import { coinRouter } from './router/coinRouter';
 
 dotenv.config();
 
@@ -17,3 +18,4 @@ app.listen(process.env.PORT || 3003, () => {
 
 app.use('/ping', pingRouter);
 app.use('/convert', converterRouter);
+app.use('/coin', coinRouter)

@@ -1,5 +1,25 @@
 ### Ping
 GET http://localhost:3003/ping
 
-### Get Cotations
+### Get Quotations
 GET http://localhost:3003/convert/BRL/529.99
+
+### Create Coin
+POST http://localhost:3003/coin/create
+Content-Type: application/json
+
+{
+    "name": "Peso Argentino",
+    "symbol": "ARS"
+}
+
+### Get Coins
+GET http://localhost:3003/coin
+
+### Delete Coin
+DELETE http://localhost:3003/coin/delete
+Content-Type: application/json
+
+{
+    "symbol": "ARS"
+}
