@@ -1,9 +1,7 @@
 import { Currency, ICurrencyDB } from "../models/Currency";
 import { BaseDatabase } from "./BaseDatabase";
-
 export class CurrencyDatabase extends BaseDatabase {
     public static TABLE_NAME = "Currencys";
-
 
     getCurrencies = async (): Promise<ICurrencyDB[]> => {
         const result = await BaseDatabase
@@ -25,7 +23,7 @@ export class CurrencyDatabase extends BaseDatabase {
             .insert(currencyDB)
     }
 
-    deleteCurrency = async (symbol: string)=> {
+    deleteCurrency = async (symbol: string) => {
         await BaseDatabase
             .connection(CurrencyDatabase.TABLE_NAME)
             .delete()

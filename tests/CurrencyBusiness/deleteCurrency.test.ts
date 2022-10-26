@@ -41,5 +41,4 @@ describe("CurrencyBusiness test", () => {
             expect(error.message).toBe("Currency not registered");
         }
     });
-
 });

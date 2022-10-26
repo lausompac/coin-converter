@@ -16,7 +16,7 @@ export class ConverterController {
             }
 
             const response = await this.converterBusiness.getQuotation(input)
-            
+
             res.status(200).send(response)
         } catch (error: unknown) {
             if (error instanceof BaseError) {

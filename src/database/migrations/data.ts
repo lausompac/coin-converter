@@ -1,6 +1,6 @@
 import { ICurrencyDB } from "../../models/Currency";
 
-export const Currencys: ICurrencyDB[] = [
+export const Currencies: ICurrencyDB[] = [
     {
         "id": "1",
         "name": "Dólar Americano",
