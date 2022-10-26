@@ -12,7 +12,7 @@ LINK
 
 ## 📄 Documentação
 
-LINK
+https://documenter.getpostman.com/view/15825788/2s8YCejt9x
 
 Os endpoints também podem ser testados diretamente no projeto através do arquivo ``requests.rest``
 
