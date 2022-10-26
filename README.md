@@ -56,7 +56,7 @@ Deletar moedas:
 5. yarn test
 ```
 
-Crie um arquivo ```.env``` na raiz do projeto e preencha as variáveis com seus dados do banco de dados PostgreSQL e dados do JWT. 
+Crie um arquivo ```.env``` na raiz do projeto e preencha as variáveis com seus dados do banco de dados mySQL.
 Essa instrução é fundamental para a execução do servidor.
 
 ```
@@ -73,13 +73,15 @@ DB_PASSWORD =
 - Typescript;
 - Express;
 - Cors;
-- Knex; 
+- Knex;
+- SQL 
 - Jest;
 
 ## 🚀 Aplicações utilizadas
 
 - VSCode;
 - Postman;
+- Beekeeper Studio
 - [API de cotação de moedas](https://docs.awesomeapi.com.br/api-de-moedas)
 
 ## 👨‍💻 Desenvolvedor:
