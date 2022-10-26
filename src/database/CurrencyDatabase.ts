@@ -1,7 +1,7 @@
 import { Currency, ICurrencyDB } from "../models/Currency";
 import { BaseDatabase } from "./BaseDatabase";
 export class CurrencyDatabase extends BaseDatabase {
-    public static TABLE_NAME = "Currencys";
+    public static TABLE_NAME = "Currencies";
 
     getCurrencies = async (): Promise<ICurrencyDB[]> => {
         const result = await BaseDatabase
