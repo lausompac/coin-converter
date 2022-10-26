@@ -1,6 +1,6 @@
 import { BaseDatabase } from "../BaseDatabase";
 import { CurrencyDatabase } from "../CurrencyDatabase";
-import { Currencys } from "./data";
+import { Currencies } from "./data";
 
 class Migrations extends BaseDatabase {
     execute = async () => {
@@ -34,13 +34,12 @@ class Migrations extends BaseDatabase {
                 symbol VARCHAR(255) NOT NULL
             );
         `)
-
     }
 
     insertData = async () => {
         await BaseDatabase
             .connection(CurrencyDatabase.TABLE_NAME)
-            .insert(Currencys)
+            .insert(Currencies)
     }
 }
 

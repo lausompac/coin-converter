@@ -4,7 +4,7 @@ import { ICurrencyDB } from "../../src/models/Currency";
 export class CurrencyDatabaseMock extends BaseDatabase {
     public static TABLE_NAME = "Currencys";
 
-    getCurrencys = async (): Promise<ICurrencyDB[]> => {
+    getCurrencies = async (): Promise<ICurrencyDB[]> => {
         const Currencys = [
             {
                 id: "1",

@@ -20,37 +20,36 @@ export class CurrencyBusiness {
     createCurrency = async (input: ICurrencyInputDTO) => {
         const { name, symbol } = input
 
-        if(!name || !symbol) {
+        if (!name || !symbol) {
             throw new RequestError("Missing input")
         }
 
-        if(name.length < 3) {
+        if (name.length < 3) {
             throw new RequestError("Name must have at least 3 characters")
         }
 
-        if(name.length > 20) {
+        if (name.length > 20) {
             throw new RequestError("Name must have at most 20 characters")
         }
 
-        if(symbol.length < 3) {
+        if (symbol.length < 3) {
             throw new RequestError("Symbol must have at least 3 characters")
         }
 
-        if(symbol.length > 5) {
+        if (symbol.length > 5) {
             throw new RequestError("Symbol must have at most 5 characters")
         }
 
-
-        if(!/^[a-zA-Z]+$/.test(symbol)) {
+        if (!/^[a-zA-Z]+$/.test(symbol)) {
             throw new RequestError("Symbol must have only letters")
         }
 
         const isCurrencyAlreadyRegistered = await this.currencyDatabase.getCurrencies()
 
-        if(isCurrencyAlreadyRegistered.find((currency: any) => currency.symbol === symbol)) {
+        if (isCurrencyAlreadyRegistered.find((currency: any) => currency.symbol === symbol)) {
             throw new ConflictError("Currency already registered")
         }
-        
+
         const id = this.idGenerator.generate()
         const currency = new Currency(
             id,
@@ -68,14 +67,13 @@ export class CurrencyBusiness {
     }
 
     deleteCurrency = async (symbol: string) => {
-
-        if(!symbol) {
+        if (!symbol) {
             throw new RequestError("Missing input")
         }
 
         const isCurrencyAlreadyRegistered = await this.currencyDatabase.getCurrencies()
 
-        if(!isCurrencyAlreadyRegistered.find((currency: any) => currency.symbol === symbol)) {
+        if (!isCurrencyAlreadyRegistered.find((currency: any) => currency.symbol === symbol)) {
             throw new NotFoundError("Currency not registered")
         }
 

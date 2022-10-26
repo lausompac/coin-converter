@@ -8,8 +8,8 @@ describe("CurrencyBusiness test", () => {
         new IdGeneratorMock()
     );
 
-    test("Succeded get currencys", async () => {
-        const response = await currencyBusiness.getCurrencys();
+    test("Succeded get currencies", async () => {
+        const response = await currencyBusiness.getCurrencies();
 
         expect(response).toEqual([
             {

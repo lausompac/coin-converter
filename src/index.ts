@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import { converterRouter } from './router/ConverterRouter';
-import { currencyRouter } from './router/currencyRouter';
+import { currencyRouter } from './router/CurrencyRouter';
 
 dotenv.config();
 

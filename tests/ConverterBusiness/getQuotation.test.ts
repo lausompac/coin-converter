@@ -6,10 +6,9 @@ import { ConverterDatabaseMock } from '../mocks/ConverterDatabaseMock';
 describe("ConverterBusiness test", () => {
     const converterBusiness = new ConverterBusiness(
         new ConverterDatabaseMock()
-
     );
 
-    test("Succeded get Currencys", async () => {
+    test("Succeded get Currencies", async () => {
         const input: IConvertInputDTO = {
             originCurrency: "BRL",
             value: "529.99"
@@ -17,22 +16,13 @@ describe("ConverterBusiness test", () => {
 
         const response = await converterBusiness.getQuotation(input);
 
-        expect(response).toEqual([
+        expect(response).toEqual(
             {
-                Currency: "USD",
-                value: "96.36"
-            },
-            {
-                Currency: "EUR",
-                value: "81.54"
-            },
-            {
-                Currency: "INR",
-                value: "7571.29"
+                "USD": "96.36",
+                "EUR": "81.54",
+                "INR": "7571.29"
             }
-        ])
-
-        expect(response.length).toEqual(3)
+        )
 
     });
 
@@ -103,5 +93,4 @@ describe("ConverterBusiness test", () => {
             expect(error.message).toEqual("Invalid value");
         }
     });
-
 })

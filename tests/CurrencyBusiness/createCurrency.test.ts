@@ -131,5 +131,4 @@ describe("CurrencyBusiness test", () => {
             expect(error.message).toBe("Name must have at most 20 characters");
         }
     });
-
 });

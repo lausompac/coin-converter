@@ -4,7 +4,7 @@ import { IConvertOutputDTO } from "../models/Currency";
 
 
 export class ConverterDatabase extends BaseDatabase {
-    public static TABLE_NAME = "Currencys";
+    public static TABLE_NAME = "Currencies";
 
     getCurrencies = async () => {
         const result = await BaseDatabase
@@ -12,7 +12,6 @@ export class ConverterDatabase extends BaseDatabase {
             .select("symbol")
 
         return result
-
     }
 
     getQuotations = async (currency: string, originCurrency: string, value: string): Promise<IConvertOutputDTO | undefined> => {
@@ -26,6 +25,5 @@ export class ConverterDatabase extends BaseDatabase {
         }
 
         return response
-
     }
 }

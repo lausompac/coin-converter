@@ -23,7 +23,6 @@ export class CurrencyController {
                 res.status(error.statusCode).send({ message: error.message })
             }
             res.status(400).send({ message: "Unexpected error occurred while creating currency" })
-
         }
     }
 
@@ -37,7 +36,6 @@ export class CurrencyController {
                 res.status(error.statusCode).send({ message: error.message })
             }
             res.status(400).send({ message: "Unexpected error occurred while getting currencies" })
-
         }
     }
 
@@ -53,7 +51,6 @@ export class CurrencyController {
                 res.status(error.statusCode).send({ message: error.message })
             }
             res.status(400).send({ message: "Unexpected error occurred while deleting currency" })
-
         }
     }
 }
