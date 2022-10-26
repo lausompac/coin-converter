@@ -1,7 +1,7 @@
 import { ConverterBusiness } from "../business/ConverterBusiness"
 import { Request, Response } from "express"
 import { BaseError } from "../errors/BaseError"
-import { IConvertInputDTO } from "../models/Coin"
+import { IConvertInputDTO } from "../models/Currency"
 
 export class ConverterController {
     constructor(
@@ -11,7 +11,7 @@ export class ConverterController {
     getQuotation = async (req: Request, res: Response) => {
         try {
             const input: IConvertInputDTO = {
-                originCoin: req.params.originCoin as string,
+                originCurrency: req.params.originCurrency as string,
                 value: req.params.value as string
             }
 

@@ -5,4 +5,4 @@ export const converterRouter = Router();
 
 const converterController = new ConverterController();
 
-converterRouter.get("/:originCoin/:value", converterController.getQuotation);
+converterRouter.get("/:originCurrency/:value", converterController.getQuotation);

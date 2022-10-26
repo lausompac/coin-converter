@@ -1,58 +1,58 @@
 import { Request, Response } from "express";
-import { CoinBusiness } from "../business/CoinBusiness";
+import { CurrencyBusiness } from "../business/CurrencyBusiness";
 import { BaseError } from "../errors/BaseError";
-import { ICoinInputDTO } from "../models/Coin";
+import { ICurrencyInputDTO } from "../models/Currency";
 
-export class CoinController {
+export class CurrencyController {
     constructor(
-        private coinBusiness: CoinBusiness = new CoinBusiness()
+        private currencyBusiness: CurrencyBusiness = new CurrencyBusiness()
     ) { }
 
-    createCoin = async (req: Request, res: Response) => {
+    createCurrency = async (req: Request, res: Response) => {
         try {
-            const input: ICoinInputDTO = {
+            const input: ICurrencyInputDTO = {
                 name: req.body.name,
                 symbol: req.body.symbol
             }
 
-            const response = await this.coinBusiness.createCoin(input)
+            const response = await this.currencyBusiness.createCurrency(input)
 
             res.status(200).send(response)
         } catch (error: unknown) {
             if (error instanceof BaseError) {
                 res.status(error.statusCode).send({ message: error.message })
             }
-            res.status(400).send({ message: "Unexpected error occurred while creating coin" })
+            res.status(400).send({ message: "Unexpected error occurred while creating currency" })
 
         }
     }
 
-    getCoins = async (req: Request, res: Response) => {
+    getCurrencies = async (req: Request, res: Response) => {
         try {
-            const response = await this.coinBusiness.getCoins()
+            const response = await this.currencyBusiness.getCurrencies()
 
             res.status(200).send(response)
         } catch (error: unknown) {
             if (error instanceof BaseError) {
                 res.status(error.statusCode).send({ message: error.message })
             }
-            res.status(400).send({ message: "Unexpected error occurred while getting coins" })
+            res.status(400).send({ message: "Unexpected error occurred while getting currencies" })
 
         }
     }
 
-    deleteCoin = async (req: Request, res: Response) => {
+    deleteCurrency = async (req: Request, res: Response) => {
         try {
             const symbol = req.body.symbol
 
-            const response = await this.coinBusiness.deleteCoin(symbol)
+            const response = await this.currencyBusiness.deleteCurrency(symbol)
 
             res.status(200).send(response)
         } catch (error: unknown) {
             if (error instanceof BaseError) {
                 res.status(error.statusCode).send({ message: error.message })
             }
-            res.status(400).send({ message: "Unexpected error occurred while deleting coin" })
+            res.status(400).send({ message: "Unexpected error occurred while deleting currency" })
 
         }
     }

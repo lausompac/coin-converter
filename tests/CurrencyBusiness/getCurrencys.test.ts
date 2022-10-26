@@ -1,15 +1,15 @@
-import { CoinBusiness } from '../../src/business/CoinBusiness';
-import { CoinDatabaseMock } from '../mocks/CoinDatabaseMock';
+import { CurrencyBusiness } from '../../src/business/CurrencyBusiness';
+import { CurrencyDatabaseMock } from '../mocks/CurrencyDatabaseMock';
 import { IdGeneratorMock } from '../mocks/services/IdGeneratorMock';
 
-describe("CoinBusiness test", () => {
-    const coinBusiness = new CoinBusiness(
-        new CoinDatabaseMock(),
+describe("CurrencyBusiness test", () => {
+    const currencyBusiness = new CurrencyBusiness(
+        new CurrencyDatabaseMock(),
         new IdGeneratorMock()
     );
 
-    test("Succeded get coins", async () => {
-        const response = await coinBusiness.getCoins();
+    test("Succeded get currencys", async () => {
+        const response = await currencyBusiness.getCurrencys();
 
         expect(response).toEqual([
             {

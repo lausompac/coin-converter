@@ -1,4 +1,4 @@
-<h1 align="center"> Coin Converter </h1>
+<h1 align="center"> Currency Converter </h1>
 
 Desafio Técnico BackEnd - Grupo SBF
 

@@ -1,6 +1,6 @@
-import { ICoinDB } from "../../models/Coin";
+import { ICurrencyDB } from "../../models/Currency";
 
-export const coins: ICoinDB[] = [
+export const Currencys: ICurrencyDB[] = [
     {
         "id": "1",
         "name": "Dólar Americano",

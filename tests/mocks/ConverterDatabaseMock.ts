@@ -1,15 +1,15 @@
 import axios from "axios";
 import { BaseDatabase } from "../../src/database/BaseDatabase";
-import { ICoinDB } from "../../src/models/Coin"
+import { ICurrencyDB } from "../../src/models/Currency"
 
 
 
 export class ConverterDatabaseMock extends BaseDatabase {
-    public static TABLE_NAME = "Coins";
+    public static TABLE_NAME = "Currencys";
 
-    getCoins = async () => {
+    getCurrencys = async () => {
 
-        const coins: ICoinDB[] = [
+        const Currencys: ICurrencyDB[] = [
             {
                 id: "1",
                 name: "Dólar Americano",
@@ -27,24 +27,24 @@ export class ConverterDatabaseMock extends BaseDatabase {
             }
         ]
 
-        return coins
+        return Currencys
     }
 
-    getQuotations = async (coin: string, originCoin: string, value: string): Promise<any> => {
-        switch (coin) {
+    getQuotations = async (Currency: string, originCurrency: string, value: string): Promise<any> => {
+        switch (Currency) {
             case "USD":
                 return {
-                    coin,
+                    Currency,
                     value: (Number(value) / 5.5).toFixed(2)
                 }
             case "EUR":
                 return {
-                    coin,
+                    Currency,
                     value: (Number(value) / 6.5).toFixed(2)
                 }
             case "INR":
                 return {
-                    coin,
+                    Currency,
                     value: (Number(value) / 0.07).toFixed(2)
                 }
 

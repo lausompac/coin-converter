@@ -1,23 +1,23 @@
-import { CoinDatabase } from "../database/CoinDatabase"
+import { CurrencyDatabase } from "../database/CurrencyDatabase"
 import { ConflictError } from "../errors/ConflictError"
 import { NotFoundError } from "../errors/NotFoundError"
 import { RequestError } from "../errors/RequestError"
-import { Coin, ICoinDB, ICoinInputDTO } from "../models/Coin"
+import { Currency, ICurrencyDB, ICurrencyInputDTO } from "../models/Currency"
 import { IdGenerator } from "../services/IdGenerator"
 
-export class CoinBusiness {
+export class CurrencyBusiness {
     constructor(
-        private coinDatabase: CoinDatabase = new CoinDatabase(),
+        private currencyDatabase: CurrencyDatabase = new CurrencyDatabase(),
         private idGenerator: IdGenerator = new IdGenerator()
     ) { }
 
-    getCoins = async (): Promise<ICoinDB[]> => {
-        const result = await this.coinDatabase.getCoins()
+    getCurrencies = async (): Promise<ICurrencyDB[]> => {
+        const result = await this.currencyDatabase.getCurrencies()
 
         return result
     }
 
-    createCoin = async (input: ICoinInputDTO) => {
+    createCurrency = async (input: ICurrencyInputDTO) => {
         const { name, symbol } = input
 
         if(!name || !symbol) {
@@ -45,44 +45,44 @@ export class CoinBusiness {
             throw new RequestError("Symbol must have only letters")
         }
 
-        const isCoinAlreadyRegistered = await this.coinDatabase.getCoins()
+        const isCurrencyAlreadyRegistered = await this.currencyDatabase.getCurrencies()
 
-        if(isCoinAlreadyRegistered.find((coin: any) => coin.symbol === symbol)) {
-            throw new ConflictError("Coin already registered")
+        if(isCurrencyAlreadyRegistered.find((currency: any) => currency.symbol === symbol)) {
+            throw new ConflictError("Currency already registered")
         }
         
         const id = this.idGenerator.generate()
-        const coin = new Coin(
+        const currency = new Currency(
             id,
             name,
             symbol.toUpperCase()
         )
 
-        await this.coinDatabase.createCoin(coin)
+        await this.currencyDatabase.createCurrency(currency)
 
         const response = {
-            message: "Coin created successfully"
+            message: "Currency created successfully"
         }
 
         return response
     }
 
-    deleteCoin = async (symbol: string) => {
+    deleteCurrency = async (symbol: string) => {
 
         if(!symbol) {
             throw new RequestError("Missing input")
         }
 
-        const isCoinAlreadyRegistered = await this.coinDatabase.getCoins()
+        const isCurrencyAlreadyRegistered = await this.currencyDatabase.getCurrencies()
 
-        if(!isCoinAlreadyRegistered.find((coin: any) => coin.symbol === symbol)) {
-            throw new NotFoundError("Coin not registered")
+        if(!isCurrencyAlreadyRegistered.find((currency: any) => currency.symbol === symbol)) {
+            throw new NotFoundError("Currency not registered")
         }
 
-        await this.coinDatabase.deleteCoin(symbol)
+        await this.currencyDatabase.deleteCurrency(symbol)
 
         const response = {
-            message: "Coin deleted successfully"
+            message: "Currency deleted successfully"
         }
 
         return response

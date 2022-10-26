@@ -1,6 +1,6 @@
 import { BaseDatabase } from "../BaseDatabase";
-import { CoinDatabase } from "../CoinDatabase";
-import { coins } from "./data";
+import { CurrencyDatabase } from "../CurrencyDatabase";
+import { Currencys } from "./data";
 
 class Migrations extends BaseDatabase {
     execute = async () => {
@@ -26,9 +26,9 @@ class Migrations extends BaseDatabase {
 
     createTables = async () => {
         await BaseDatabase.connection.raw(`
-            DROP TABLE IF EXISTS ${CoinDatabase.TABLE_NAME};
+            DROP TABLE IF EXISTS ${CurrencyDatabase.TABLE_NAME};
 
-            CREATE TABLE IF NOT EXISTS ${CoinDatabase.TABLE_NAME} (
+            CREATE TABLE IF NOT EXISTS ${CurrencyDatabase.TABLE_NAME} (
                 id VARCHAR(255) PRIMARY KEY,
                 name VARCHAR(255) NOT NULL,
                 symbol VARCHAR(255) NOT NULL
@@ -39,8 +39,8 @@ class Migrations extends BaseDatabase {
 
     insertData = async () => {
         await BaseDatabase
-            .connection(CoinDatabase.TABLE_NAME)
-            .insert(coins)
+            .connection(CurrencyDatabase.TABLE_NAME)
+            .insert(Currencys)
     }
 }
 

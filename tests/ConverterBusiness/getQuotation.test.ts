@@ -1,5 +1,5 @@
 import { ConverterBusiness } from '../../src/business/ConverterBusiness';
-import { IConvertInputDTO } from '../../src/models/Coin';
+import { IConvertInputDTO } from '../../src/models/Currency';
 import { ConverterDatabaseMock } from '../mocks/ConverterDatabaseMock';
 
 
@@ -9,9 +9,9 @@ describe("ConverterBusiness test", () => {
 
     );
 
-    test("Succeded get coins", async () => {
+    test("Succeded get Currencys", async () => {
         const input: IConvertInputDTO = {
-            originCoin: "BRL",
+            originCurrency: "BRL",
             value: "529.99"
         }
 
@@ -19,15 +19,15 @@ describe("ConverterBusiness test", () => {
 
         expect(response).toEqual([
             {
-                coin: "USD",
+                Currency: "USD",
                 value: "96.36"
             },
             {
-                coin: "EUR",
+                Currency: "EUR",
                 value: "81.54"
             },
             {
-                coin: "INR",
+                Currency: "INR",
                 value: "7571.29"
             }
         ])
@@ -41,7 +41,7 @@ describe("ConverterBusiness test", () => {
 
         try {
             const input: IConvertInputDTO = {
-                originCoin: "",
+                originCurrency: "",
                 value: ""
             }
 
@@ -58,7 +58,7 @@ describe("ConverterBusiness test", () => {
 
         try {
             const input: IConvertInputDTO = {
-                originCoin: "BRL",
+                originCurrency: "BRL",
                 value: "-1"
             }
 
@@ -70,12 +70,12 @@ describe("ConverterBusiness test", () => {
         }
     });
 
-    test("Failed get quotation - Invalid coin", async () => {
+    test("Failed get quotation - Invalid Currency", async () => {
         expect.assertions(2);
 
         try {
             const input: IConvertInputDTO = {
-                originCoin: "ABC",
+                originCurrency: "ABC",
                 value: "1"
             }
 
@@ -83,7 +83,7 @@ describe("ConverterBusiness test", () => {
 
         } catch (error) {
             expect(error.statusCode).toEqual(400);
-            expect(error.message).toEqual("Invalid coin");
+            expect(error.message).toEqual("Currency must be BRL");
         }
     });
 
@@ -92,7 +92,7 @@ describe("ConverterBusiness test", () => {
 
         try {
             const input: IConvertInputDTO = {
-                originCoin: "BRL",
+                originCurrency: "BRL",
                 value: "abc"
             }
 

@@ -1,11 +1,12 @@
 import { BaseDatabase } from "./BaseDatabase";
 import axios from "axios";
-import { IConvertOutputDTO } from "../models/Coin";
+import { IConvertOutputDTO } from "../models/Currency";
+
 
 export class ConverterDatabase extends BaseDatabase {
-    public static TABLE_NAME = "Coins";
+    public static TABLE_NAME = "Currencys";
 
-    getCoins = async () => {
+    getCurrencies = async () => {
         const result = await BaseDatabase
             .connection(ConverterDatabase.TABLE_NAME)
             .select("symbol")
@@ -14,13 +15,13 @@ export class ConverterDatabase extends BaseDatabase {
 
     }
 
-    getQuotations = async (coin: string, originCoin: string, value: string): Promise<IConvertOutputDTO | undefined> => {
-        const result = await axios.get(`https://economia.awesomeapi.com.br/last/${coin}-${originCoin}`)
+    getQuotations = async (currency: string, originCurrency: string, value: string): Promise<IConvertOutputDTO | undefined> => {
+        const result = await axios.get(`https://economia.awesomeapi.com.br/last/${currency}-${originCurrency}`)
 
-        const calculate = Number(value) / Number(result.data[`${coin}${originCoin}`].high)
+        const calculate = Number(value) / Number(result.data[`${currency}${originCurrency}`].high)
 
-        const response = {
-            coin, 
+        const response: IConvertOutputDTO = {
+            currency, 
             value: calculate.toFixed(2)
         }
 

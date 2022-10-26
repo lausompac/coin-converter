@@ -1,6 +1,6 @@
 import { ConverterDatabase } from "../database/ConverterDatabase"
 import { RequestError } from "../errors/RequestError"
-import { IConvertInputDTO } from "../models/Coin"
+import { CurrencyResponse, IConvertInputDTO, IConvertOutputDTO } from "../models/Currency"
 
 export class ConverterBusiness {
     constructor(
@@ -8,9 +8,9 @@ export class ConverterBusiness {
     ) { }
 
     getQuotation = async (input: IConvertInputDTO): Promise<any> => {
-        const { originCoin, value } = input
+        const { originCurrency, value } = input
 
-        if (!originCoin || !value) {
+        if (!originCurrency || !value) {
             throw new RequestError("Missing input")
         }
 
@@ -18,30 +18,34 @@ export class ConverterBusiness {
             throw new RequestError("Value must be greater than 0")
         }
 
-        if(isNaN(Number(value))) {
+        if (isNaN(Number(value))) {
             throw new RequestError("Invalid value")
         }
 
-        if(originCoin !== "BRL") {
-            throw new RequestError("Invalid coin")
+        if (originCurrency !== "BRL") {
+            throw new RequestError("Currency must be BRL")
         }
 
-        // Lista de moedas válidas (pensar nisso)
+        const currencies = await this.converterDatabase.getCurrencies()
 
-        
-
-        const coins = await this.converterDatabase.getCoins()
-
-        const quotation = coins.map((coin) => {
-            const result = this.converterDatabase.getQuotations(coin.symbol, originCoin, value)
+        const quotation = currencies.map((currency) => {
+            const result = this.converterDatabase.getQuotations(currency.symbol, originCurrency, value)
 
             return result
         })
 
-        const response = await Promise.all(quotation)
-        //modelar resposta
+        const result = await Promise.all(quotation)
 
-        return response
+        function response(result: IConvertOutputDTO[]) {
+            const response: CurrencyResponse = {}
+
+            result.map((item) => {
+                return response[item.currency] = item.value
+            })
+            return response
+        }
+
+        return response(result)
 
     }
 }

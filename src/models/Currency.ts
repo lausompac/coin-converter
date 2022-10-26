@@ -1,10 +1,10 @@
-export interface ICoinDB {
+export interface ICurrencyDB {
     id: string,
     name: string,
     symbol: string
 }
 
-export class Coin {
+export class Currency {
     constructor(
         private id: string,
         private name: string,
@@ -18,16 +18,20 @@ export class Coin {
 }
 
 export interface IConvertInputDTO {
-    originCoin: string,
+    originCurrency: string,
     value: string
 }
 
 export interface IConvertOutputDTO {
-    coin: string,
+    currency: string,
     value: string
 }
 
-export interface ICoinInputDTO {
+export interface ICurrencyInputDTO {
     name: string,
     symbol: string
+}
+
+export type CurrencyResponse = {
+    [key: string]: string
 }

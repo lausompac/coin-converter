@@ -1,11 +1,11 @@
 import { BaseDatabase } from "../../src/database/BaseDatabase"
-import { ICoinDB } from "../../src/models/Coin";
+import { ICurrencyDB } from "../../src/models/Currency";
 
-export class CoinDatabaseMock extends BaseDatabase {
-    public static TABLE_NAME = "Coins";
+export class CurrencyDatabaseMock extends BaseDatabase {
+    public static TABLE_NAME = "Currencys";
 
-    getCoins = async (): Promise<ICoinDB[]> => {
-        const coins = [
+    getCurrencys = async (): Promise<ICurrencyDB[]> => {
+        const Currencys = [
             {
                 id: "1",
                 name: "Dólar Americano",
@@ -23,14 +23,14 @@ export class CoinDatabaseMock extends BaseDatabase {
             }
         ]
 
-        return coins
+        return Currencys
     }
 
-    createCoin = async (coin: any): Promise<void> => {
+    createCurrency = async (Currency: any): Promise<void> => {
 
     }
 
-    deleteCoin = async (symbol: string): Promise<void> => {
+    deleteCurrency = async (symbol: string): Promise<void> => {
 
     }
 }
