@@ -39,7 +39,7 @@ Deletar moedas:
 * Para baixar o projeto
 ```
 1. git clone https://github.com/lausompac/eng-gruposbf-backend-typescript.git
-2. cd 
+2. cd eng-gruposbf-backend-typescript
 ```
 * Para instalar e rodar o projeto
 ```
