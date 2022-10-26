@@ -4,7 +4,7 @@ Desafio Técnico BackEnd - Grupo SBF
 
 ### Sobre o projeto
 
-API REST 
+API REST feita para conversão de valores de produtos, de moeda brasileira para outras moedas de diferentes nacionalidades. 
 
 ## 🚀 Deploy
 
@@ -18,8 +18,17 @@ Os endpoints também podem ser testados diretamente no projeto através do arqui
 
 ## ✔️ Features
 
-Busca de Moedas
-- [x] 
+Conversão de moedas:
+- [x] O endpoint recebe, através do link, o valor a ser convertido e sua moeda de origem. A resposta contém a moeda convertida e seu valor;
+
+Criação de moeda:
+- [x] A aplicação permite acrescentar novos tipos de moedas num banco de dados, fazendo o endpoint de conversão de moedas trazer mais conversões;
+
+Busca de moedas:
+- [x] O endpoint permite acessar todas as moedas adicionadas no banco de dados;
+
+Deletar moedas:
+- [x] O endpoint permite deletar moedas acrescentadas ao banco de dados;
 
 ## 🎲 Rodando o projeto
 
