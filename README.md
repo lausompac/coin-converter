@@ -66,9 +66,6 @@ DB_NAME =
 DB_USER = 
 DB_PASSWORD = 
 
-JWT_KEY = minhasenhasegura1234
-JWT_EXPIRES_IN = 24h
-
 ```
 
 ## 🛠 Tecnologias utilizadas
