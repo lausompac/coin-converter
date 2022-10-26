@@ -1,7 +1,7 @@
 {
   "name": "eng-gruposbf-backend-typescript",
   "version": "1.0.0",
-  "description": "<h1 align=\"center\"> Coin Converter </h1>",
+  "description": "<h1 align=\"center\"> Currency Converter </h1>",
   "main": "index.js",
   "scripts": {
     "start": "node ./build/index.js",
