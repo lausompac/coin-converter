@@ -74,6 +74,7 @@ JWT_EXPIRES_IN = 24h
 
 - VSCode;
 - Postman;
+- [API de cotação de moedas](https://docs.awesomeapi.com.br/api-de-moedas)
 
 ## 👨‍💻 Desenvolvedor:
 
