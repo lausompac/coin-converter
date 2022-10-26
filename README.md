@@ -32,8 +32,9 @@ Deletar moedas:
 
 ## 🎲 Rodando o projeto
 
-- Para rodar o projeto você vai precisar do [Node.JS](https://nodejs.org/en/download/)
-- Um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/)
+- Para rodar o projeto você vai precisar do [Node.JS](https://nodejs.org/en/download/);
+- Um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/);
+- Um banco de dados mySQL;
 
 ### Como instalar e Rodar
 * Para baixar o projeto
