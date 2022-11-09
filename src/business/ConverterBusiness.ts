@@ -10,22 +10,6 @@ export class ConverterBusiness {
     getQuotation = async (input: IConvertInputDTO): Promise<any> => {
         const { originCurrency, value } = input
 
-        if (!originCurrency || !value) {
-            throw new RequestError("Missing input")
-        }
-
-        if (Number(value) <= 0) {
-            throw new RequestError("Value must be greater than 0")
-        }
-
-        if (isNaN(Number(value))) {
-            throw new RequestError("Invalid value")
-        }
-
-        if (originCurrency !== "BRL") {
-            throw new RequestError("Currency must be BRL")
-        }
-
         const currencies = await this.converterDatabase.getCurrencies()
 
         const quotation = currencies.map((currency) => {
