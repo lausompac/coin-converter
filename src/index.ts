@@ -16,3 +16,7 @@ app.listen(process.env.PORT || 3003, () => {
 
 app.use('/convert', converterRouter);
 app.use('/currency', currencyRouter)
+
+app.use((req, res) => {
+    res.status(404).send('Route not found');
+  });
