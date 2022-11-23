@@ -1,6 +1,5 @@
 <h1 align="center"> Coin Converter </h1>
 
-Desafio Técnico BackEnd - Grupo SBF
 
 ### Sobre o projeto
 
